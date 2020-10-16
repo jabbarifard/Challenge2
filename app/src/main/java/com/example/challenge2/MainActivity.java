@@ -11,11 +11,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button insertBtn;
-    Button chooseBtn;
+    Button orangeBtn;
+    Button pepsiBtn;
+    Button cokeBtn;
     int amount;
     TextView totalAmount;
     TextView moneyAmount;
     String amountText;
+    String msg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,14 +27,30 @@ public class MainActivity extends AppCompatActivity {
         totalAmount = (TextView) findViewById(R.id.totalAmount);
         moneyAmount = (EditText) findViewById(R.id.moneyAmount);
         insertBtn = (Button) findViewById(R.id.insertBtn);
-        chooseBtn = (Button) findViewById(R.id.chooseBtn);
-        chooseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Toast.makeText(getApplicationContext(),
-                        "You chose Orange Crush!", Toast.LENGTH_LONG).show();
-            }
-        });
+        orangeBtn = (Button) findViewById(R.id.orangeBtn);
+        pepsiBtn = (Button) findViewById(R.id.pepsiBtn);
+        cokeBtn = (Button) findViewById(R.id.cokeBtn);
+//        orangeBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void chooseBtnClick(View arg0) {
+//                Toast.makeText(getApplicationContext(),
+//                        "You chose Orange Crush!", Toast.LENGTH_LONG).show();
+//            }
+//        });
+    }
+
+    public void chooseBtnClick(View view) {
+        if (view.getId() == R.id.orangeBtn) {
+            Toast.makeText(getApplicationContext(),
+                    "You chose Orange Crush!", Toast.LENGTH_LONG).show();
+        } else if (view.getId() == R.id.pepsiBtn) {
+            Toast.makeText(getApplicationContext(),
+                    "You chose Pepsi!", Toast.LENGTH_LONG).show();
+        }else if (view.getId() == R.id.cokeBtn){
+            Toast.makeText(getApplicationContext(),
+                    "You chose Coke!", Toast.LENGTH_LONG).show();
+        }
     }
 //    public void toastMsg(String msg) {
 //        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
