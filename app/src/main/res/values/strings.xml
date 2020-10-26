@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Challenge #2</string>
+    <string name="app">Challenge #2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="dialog_fire_missiles">test</string>
+    <string name="fire">fireTest</string>
+    <string name="cancel">cancelTest</string>
+    <string name="app_name">Vending Machine</string>
+    <string name="dialog_message">Welcome to Alert Dialog</string>
+    <string name="dialog_title">Javatpoint Alert Dialog</string>
 </resources>

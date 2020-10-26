@@ -6,39 +6,152 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="407dp"
-        android:layout_height="102dp"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/welcomeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please choose an item!"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/orangePrice" />
+
+    <ImageView
+        android:id="@+id/orangeImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059">
+        app:layout_constraintVertical_bias="0.09"
+        app:srcCompat="@drawable/orangecrush" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/orangecrush" />
 
-    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/orangePrice"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Price: 45 Cents"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/orangeImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/orangeImg"
+        app:layout_constraintTop_toTopOf="@+id/orangeImg"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/orangeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Item"
+        app:layout_constraintBottom_toBottomOf="@+id/orangePrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/orangePrice"
+        app:layout_constraintTop_toTopOf="@+id/orangePrice" />
+
+    <ImageView
+        android:id="@+id/pepsiImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orangeImg"
+        app:layout_constraintVertical_bias="0.04"
+        app:srcCompat="@drawable/pepsi" />
+
+    <TextView
+        android:id="@+id/pepsiPrice"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Price: 35 Cents"
+        app:layout_constraintBottom_toBottomOf="@+id/pepsiImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pepsiImg"
+        app:layout_constraintTop_toTopOf="@+id/pepsiImg"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.2" />
+
+    <Button
+        android:id="@+id/pepsiBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Item"
+        app:layout_constraintBottom_toBottomOf="@+id/pepsiPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pepsiPrice"
+        app:layout_constraintTop_toTopOf="@+id/pepsiPrice"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/cokeImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pepsiImg"
+        app:layout_constraintVertical_bias="0.04"
+        app:srcCompat="@drawable/coke" />
+
+    <TextView
+        android:id="@+id/cokePrice"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="Price: 25 Cents"
+        app:layout_constraintBottom_toBottomOf="@+id/cokeImg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cokeImg"
+        app:layout_constraintTop_toTopOf="@+id/cokeImg"
+        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.2" />
+
+    <Button
+        android:id="@+id/cokeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Item"
+        app:layout_constraintBottom_toBottomOf="@+id/cokePrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cokePrice"
+        app:layout_constraintTop_toTopOf="@+id/cokePrice"
+        app:layout_constraintVertical_bias="0.55" />
+
+
+
 
     <EditText
         android:id="@+id/moneyAmount"
         android:layout_width="212dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="amount"
+        android:hint=" Total Amount"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintVertical_bias="0.75" />
 
     <Button
         android:id="@+id/insertBtn"
@@ -46,87 +159,52 @@
         android:layout_height="wrap_content"
         android:onClick="insertOnClick"
         android:text="Insert Money"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/moneyAmount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/moneyAmount"
+        app:layout_constraintTop_toTopOf="@+id/moneyAmount"
+        app:layout_constraintVertical_bias="0.75" />
 
     <TextView
-        android:id="@+id/totalAmount"
+        android:id="@+id/changeAmount"
         android:layout_width="117dp"
-        android:layout_height="47dp"
-        android:hint="Total Amount"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="Change Amount"
+        app:layout_constraintBottom_toBottomOf="@+id/change"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/change"
         app:layout_constraintVertical_bias="0.748" />
 
+
     <TextView
-        android:id="@+id/total"
-        android:layout_width="207dp"
-        android:layout_height="53dp"
-        android:text="Total:"
+        android:id="@+id/change"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="Change:"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.755" />
+        app:layout_constraintVertical_bias="0.93" />
 
     <Button
-        android:id="@+id/orangeBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/refundBtn"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:onClick="chooseBtnClick"
-        android:text="Choose Item"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Refund"
+        app:layout_constraintBottom_toBottomOf="@+id/changeAmount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301" />
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toEndOf="@+id/changeAmount"
+        app:layout_constraintTop_toBottomOf="@+id/insertBtn"
+        app:layout_constraintVertical_bias="0.96"  />
 
-    <Button
-        android:id="@+id/cokeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="chooseBtnClick"
-        android:text="Choose Item"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
-
-    <Button
-        android:id="@+id/pepsiBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="chooseBtnClick"
-        android:text="Choose Item"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="129dp"
-        android:layout_height="27dp"
-        android:gravity="center"
-        android:text="45 Cents"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
