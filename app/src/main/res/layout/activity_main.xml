@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/orangeView"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/orangeImg"
+        app:layout_constraintBottom_toBottomOf="@id/orangeImg"/>
+
     <TextView
         android:id="@+id/welcomeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please choose an item!"
+        android:text="Please insert money and choose an item!"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,12 +37,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09"
         app:srcCompat="@drawable/orangecrush" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
 
     <TextView
         android:id="@+id/orangePrice"
@@ -59,6 +62,15 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/orangePrice"
         app:layout_constraintTop_toTopOf="@+id/orangePrice" />
+
+    <View
+        android:id="@+id/pepsiView"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/pepsiImg"
+        app:layout_constraintBottom_toBottomOf="@id/pepsiImg"/>
 
     <ImageView
         android:id="@+id/pepsiImg"
@@ -98,6 +110,16 @@
         app:layout_constraintTop_toTopOf="@+id/pepsiPrice"
         app:layout_constraintVertical_bias="0.5" />
 
+    <View
+        android:id="@+id/cokeView"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cokeImg"
+        app:layout_constraintBottom_toBottomOf="@id/cokeImg"/>
+
+
     <ImageView
         android:id="@+id/cokeImg"
         android:layout_width="100dp"
@@ -107,7 +129,7 @@
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pepsiImg"
-        app:layout_constraintVertical_bias="0.04"
+        app:layout_constraintVertical_bias="0.05"
         app:srcCompat="@drawable/coke" />
 
     <TextView
@@ -165,6 +187,19 @@
         app:layout_constraintStart_toEndOf="@+id/moneyAmount"
         app:layout_constraintTop_toTopOf="@+id/moneyAmount"
         app:layout_constraintVertical_bias="0.75" />
+
+    <TextView
+        android:id="@+id/inputAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Insert the values: 5,10 or 25, i.e. nickel, dime or quarter."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moneyAmount"
+        app:layout_constraintVertical_bias="0.01" />
 
     <TextView
         android:id="@+id/changeAmount"

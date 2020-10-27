@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -17,7 +18,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button insertBtn;
-    Button chooseBtn;
     Button refundBtn;
     Button orangeBtn;
     Button pepsiBtn;
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     int amount;
     int needed;
     String change;
+    String amountText;
     AlertDialog.Builder builder;
 
     //int userInput;
@@ -34,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
     TextView pepsiPrice;
     TextView cokePrice;
     ImageView orangeImg;
-    String amountText;
-    String msg;
+    View orangeView;
+    View pepsiView;
+    View cokeView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
         orangePrice = (TextView) findViewById(R.id.orangePrice);
         pepsiPrice = (TextView) findViewById(R.id.pepsiPrice);
         cokePrice = (TextView) findViewById(R.id.cokePrice);
+        orangeView = (View) findViewById(R.id.orangeView);
+        pepsiView = (View) findViewById(R.id.pepsiView);
+        cokeView = (View) findViewById(R.id.cokeView);
+        final int backColor = Color.parseColor("#99CCFF");
+
+
 
 
 
@@ -67,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 if (amount >= 45) {
                                     dialog.cancel();
-                                    orangePrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                                    orangeView.setBackgroundColor(backColor);
                                     amount = amount - 45;
                                     change = Integer.toString(amount);
                                     changeAmount.setText(change.toString()+" cents");
@@ -108,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 if (amount >= 35) {
                                     dialog.cancel();
-                                    pepsiPrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                                    pepsiView.setBackgroundColor(backColor);
                                     amount = amount - 35;
                                     change = Integer.toString(amount);
                                     changeAmount.setText(change.toString()+" cents");
@@ -146,7 +154,8 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 if (amount >= 25) {
                                     dialog.cancel();
-                                    cokePrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                                    cokeView.setBackgroundColor(backColor);
+                                    //cokePrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
                                     amount = amount - 25;
                                     change = Integer.toString(amount);
                                     changeAmount.setText(change.toString()+" cents");
@@ -190,9 +199,9 @@ public class MainActivity extends AppCompatActivity {
                                 amount = 0;
                                 changeAmount.setText(Integer.toString(amount)+" cents");
                                 moneyAmount.setText("");
-                                orangePrice.setBackgroundColor(getResources().getColor(android.R.color.white));
-                                pepsiPrice.setBackgroundColor(getResources().getColor(android.R.color.white));
-                                cokePrice.setBackgroundColor(getResources().getColor(android.R.color.white));
+                                orangeView.setBackgroundColor(Color.TRANSPARENT);
+                                pepsiView.setBackgroundColor(Color.TRANSPARENT);
+                                cokeView.setBackgroundColor(Color.TRANSPARENT);
                             }
                         })
 
@@ -334,10 +343,15 @@ public class MainActivity extends AppCompatActivity {
 
         amountText = moneyAmount.getText().toString().trim();
         if(amountText.length() == 0){amount = 0;}
-        else {
+        if (Integer.valueOf(amountText)== 5 || Integer.valueOf(amountText) == 10 || Integer.valueOf(amountText) == 25) {
             amount += Integer.valueOf(amountText);
             changeAmount.setText(Integer.toString(amount));
             moneyAmount.setText(Integer.toString(amount));
+        }
+        else {
+            Toast.makeText(getApplicationContext(),
+                    "You can insert only the values: 5,10 or 25, i.e. nickel, dime or quarter!", Toast.LENGTH_LONG).show();
+            moneyAmount.setText(String.valueOf(amount));
         }
         hideKeyboard();
     }
