@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     String amountText;
     AlertDialog.Builder builder;
 
-    //int userInput;
     TextView changeAmount;
     TextView moneyAmount;
     TextView orangePrice;
@@ -38,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     View orangeView;
     View pepsiView;
     View cokeView;
+    final int backColor = Color.parseColor("#99CCFF");
+    final int price = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,129 +59,27 @@ public class MainActivity extends AppCompatActivity {
         orangeView = (View) findViewById(R.id.orangeView);
         pepsiView = (View) findViewById(R.id.pepsiView);
         cokeView = (View) findViewById(R.id.cokeView);
-        final int backColor = Color.parseColor("#99CCFF");
-
-
 
 
 
         orangeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-                //Setting message manually and performing action on button click
-                builder.setMessage("Do you want to continue?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                if (amount >= 45) {
-                                    dialog.cancel();
-                                    orangeView.setBackgroundColor(backColor);
-                                    amount = amount - 45;
-                                    change = Integer.toString(amount);
-                                    changeAmount.setText(change.toString()+" cents");
-                                    moneyAmount.setText(change.toString()+" cents");
-                                    Toast.makeText(getApplicationContext(), "Your change: " + change + " cents!",
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    dialog.cancel();
-                                    needed = 45 - amount;
-                                    Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //  Action for 'NO' Button
-                                dialog.cancel();
-                            }
-                        });
-                //Creating dialog box
-                AlertDialog alert = builder.create();
-                //Setting the title manually
-                alert.setTitle("You chose Orange Crush!");
-                alert.show();
+                yesDialog(orangeView, 45, "Orange Crush");
             }
         });
-
 
         pepsiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-                //Setting message manually and performing action on button click
-                builder.setMessage("Do you want to continue?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                if (amount >= 35) {
-                                    dialog.cancel();
-                                    pepsiView.setBackgroundColor(backColor);
-                                    amount = amount - 35;
-                                    change = Integer.toString(amount);
-                                    changeAmount.setText(change.toString()+" cents");
-                                    moneyAmount.setText(change.toString()+" cents");
-                                    Toast.makeText(getApplicationContext(), "Your change: " + change + " cents!",
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    dialog.cancel();
-                                    needed = 35 - amount;
-                                    Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //  Action for 'NO' Button
-                                dialog.cancel();
-                            }
-                        });
-                //Creating dialog box
-                AlertDialog alert = builder.create();
-                //Setting the title manually
-                alert.setTitle("You chose Pepsi!");
-                alert.show();
+                yesDialog(pepsiView, 35, "Pepsi");
             }
         });
 
         cokeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                builder.setMessage("Do you want to continue?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                if (amount >= 25) {
-                                    dialog.cancel();
-                                    cokeView.setBackgroundColor(backColor);
-                                    //cokePrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                                    amount = amount - 25;
-                                    change = Integer.toString(amount);
-                                    changeAmount.setText(change.toString()+" cents");
-                                    moneyAmount.setText(change.toString()+" cents");
-                                    Toast.makeText(getApplicationContext(), "Your change: " + change + " cents!",
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-                                    dialog.cancel();
-                                    needed = 25 - amount;
-                                    Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //  Action for 'NO' Button
-                                dialog.cancel();
-                            }
-                        });
-                //Creating dialog box
-                AlertDialog alert = builder.create();
-                //Setting the title manually
-                alert.setTitle("You chose Coke!");
-                alert.show();
+                yesDialog(cokeView, 25, "Coke");
             }
         });
 
@@ -197,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), change + " cents has been refunded!",
                                         Toast.LENGTH_SHORT).show();
                                 amount = 0;
-                                changeAmount.setText(Integer.toString(amount)+" cents");
+                                changeAmount.setText(Integer.toString(amount));
                                 moneyAmount.setText("");
                                 orangeView.setBackgroundColor(Color.TRANSPARENT);
                                 pepsiView.setBackgroundColor(Color.TRANSPARENT);
@@ -220,130 +119,49 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//            chooseBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    //if (chooseBtn.getId() == R.id.orangeBtn)
-//                        //Uncomment the below code to Set the message and title from the strings.xml file
-//                    builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-//                    //else if(chooseBtn.getId() == R.id.pepsiBtn){
-//                        //builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
-//                    //Setting message manually and performing action on button click
-//                    builder.setMessage("Do you want to continue?")
-//                            .setCancelable(false)
-//                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int id) {
-//                                    //finish();
-//                                    if(chooseBtn.getId() == R.id.orangeBtn) {
-//                                        if (amount >= 45) {
-//                                            dialog.cancel();
-//                                            Toast.makeText(getApplicationContext(), "You choose yes action for alertbox",
-//                                                    Toast.LENGTH_SHORT).show();
-//                                            orangePrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-//                                            //orangeImg.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-//                                            amount = amount - 45;
-//                                            change = Integer.toString(amount);
-//                                            totalAmount.setText(change.toString());
-//                                            moneyAmount.setText(change.toString());
-//                                        } else {
-//                                            dialog.cancel();
-//                                            needed = 45 - amount;
-//                                            Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
-//                                                    Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    } else if (chooseBtn.getId() == R.id.pepsiBtn){
-//                                        if (amount >= 35) {
-//                                            dialog.cancel();
-//                                            Toast.makeText(getApplicationContext(), "You choose yes action for alertbox",
-//                                                    Toast.LENGTH_SHORT).show();
-//                                            pepsiPrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-//                                            //orangeImg.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-//                                            amount = amount - 35;
-//                                            change = Integer.toString(amount);
-//                                            totalAmount.setText(change.toString());
-//                                            moneyAmount.setText(change.toString());
-//                                        } else {
-//                                            dialog.cancel();
-//                                            needed = 35 - amount;
-//                                            Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
-//                                                    Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    } else {
-//                                        if (amount >= 25) {
-//                                            dialog.cancel();
-//                                            Toast.makeText(getApplicationContext(), "You choose yes action for alertbox",
-//                                                    Toast.LENGTH_SHORT).show();
-//                                            cokePrice.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-//                                            //orangeImg.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-//                                            amount = amount - 25;
-//                                            change = Integer.toString(amount);
-//                                            totalAmount.setText(change.toString());
-//                                            moneyAmount.setText(change.toString());
-//                                        } else {
-//                                            dialog.cancel();
-//                                            needed = 25 - amount;
-//                                            Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
-//                                                    Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    }
-//                                }
-//                            })
-//                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int id) {
-//                                    //  Action for 'NO' Button
-//                                    dialog.cancel();
-//                                    Toast.makeText(getApplicationContext(), "You choose no action for alertbox",
-//                                            Toast.LENGTH_SHORT).show();
-//                                }
-//                            });
-//                    //Creating dialog box
-//                    AlertDialog alert = builder.create();
-//                    //Setting the title manually
-//                    if(chooseBtn.getId() == R.id.orangeBtn) {
-//                        alert.setTitle("You chose Orange Crush!");
-//                    } else if (chooseBtn.getId() == R.id.pepsiBtn){
-//                        alert.setTitle("You chose Pepsi!");
-//                    } else {
-//                        alert.setTitle("You chose Coke!");
-//                    }
-//                    alert.show();
-//                }
-//            });
-//        }
+    public void yesDialog (final View view, final int price, final String choice){
 
-
-//    public void chooseBtnClick(View view) {
-//        if (view.getId() == R.id.orangeBtn) {
-//            Toast.makeText(getApplicationContext(),
-//                    "You chose Orange Crush!", Toast.LENGTH_LONG).show();
-//        } else if (view.getId() == R.id.pepsiBtn) {
-//            Toast.makeText(getApplicationContext(),
-//                    "You chose Pepsi!", Toast.LENGTH_LONG).show();
-//        }else if (view.getId() == R.id.cokeBtn){
-//            Toast.makeText(getApplicationContext(),
-//                    "You chose Coke!", Toast.LENGTH_LONG).show();
-//        }
-//    }
-
-//    public void refundBtnClick(View view) {
-//        if (view.getId() == R.id.orangeBtn) {
-//            Toast.makeText(getApplicationContext(),
-//                    "You chose Orange Crush!", Toast.LENGTH_LONG).show();
-//        } else if (view.getId() == R.id.pepsiBtn) {
-//            Toast.makeText(getApplicationContext(),
-//                    "You chose Pepsi!", Toast.LENGTH_LONG).show();
-//        }else if (view.getId() == R.id.cokeBtn){
-//            Toast.makeText(getApplicationContext(),
-//                    "You chose Coke!", Toast.LENGTH_LONG).show();
-//        }
-//    }
+        builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to continue?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        if (amount >= price) {
+                            view.setBackgroundColor(backColor);
+                            amount = amount - price;
+                            change = Integer.toString(amount);
+                            changeAmount.setText(change.toString());
+                            moneyAmount.setText(change.toString());
+                            Toast.makeText(getApplicationContext(), "Your change: " + change + " cents!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            needed = price - amount;
+                            Toast.makeText(getApplicationContext(), "Sorry! You don't have enough money. You need " + needed + " cents more!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("You chose "+ choice+" !");
+        alert.show();
+    }
 
 
     public void insertOnClick(View view){
 
         amountText = moneyAmount.getText().toString().trim();
         if(amountText.length() == 0){amount = 0;}
-        if (Integer.valueOf(amountText)== 5 || Integer.valueOf(amountText) == 10 || Integer.valueOf(amountText) == 25) {
+        if ((amountText.matches("[0-9]+")) && (Integer.valueOf(amountText)== 5 || Integer.valueOf(amountText) == 10 || Integer.valueOf(amountText) == 25)) {
             amount += Integer.valueOf(amountText);
             changeAmount.setText(Integer.toString(amount));
             moneyAmount.setText(Integer.toString(amount));
