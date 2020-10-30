@@ -57,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose Item"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/orangePrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -103,6 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose Item"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/pepsiPrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -151,6 +153,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose Item"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/cokePrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -181,6 +184,7 @@
         android:layout_height="wrap_content"
         android:onClick="insertOnClick"
         android:text="Insert Money"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/moneyAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
@@ -234,12 +238,13 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:text="Refund"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/changeAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.77"
         app:layout_constraintStart_toEndOf="@+id/changeAmount"
         app:layout_constraintTop_toBottomOf="@+id/insertBtn"
-        app:layout_constraintVertical_bias="0.96"  />
+        app:layout_constraintVertical_bias="0.96" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
